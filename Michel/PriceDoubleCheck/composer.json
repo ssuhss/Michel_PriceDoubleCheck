@@ -1,0 +1,22 @@
+{
+    "name": "michel/module-pricedoublecheck",
+    "description": "michel",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Michel module",
+            "email": "michel_silva_04@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Michel\\PriceDoubleCheck\\": ""
+        }
+    }
+}

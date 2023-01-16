@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <price_approve>
+            <general>
+                <enable>1</enable>
+                <email_to>contato@michel.com.br</email_to>
+                <email_template_price_approve>price_approve_general_email_template_price_approve</email_template_price_approve>
+                <email_identity>general</email_identity>
+            </general>
+        </price_approve>
+    </default>
+</config>

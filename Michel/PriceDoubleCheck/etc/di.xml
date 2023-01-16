@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="price_list" xsi:type="object">Michel\PriceDoubleCheck\Console\Command\ListApprovePrice
+                </item>
+                <item name="price_approve" xsi:type="object">Michel\PriceDoubleCheck\Console\Command\Approve</item>
+                <item name="price_reprove" xsi:type="object">Michel\PriceDoubleCheck\Console\Command\Reprove</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ui_listing_data_source" xsi:type="string">
+                    Michel\PriceDoubleCheck\Model\ResourceModel\PriceApprove\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Michel\PriceDoubleCheck\Model\ResourceModel\PriceApprove\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">price_approve</argument>
+            <argument name="resourceModel" xsi:type="string">Michel\PriceDoubleCheck\Model\ResourceModel\PriceApprove
+            </argument>
+        </arguments>
+    </virtualType>
+
+</config>

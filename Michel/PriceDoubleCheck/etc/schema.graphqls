@@ -1,0 +1,42 @@
+type Mutation {
+    approvePrice(input: ApprovePriceInput @doc(description: "Approve new price for products.")): ApprovePriceOutput @resolver(class: "Michel\\PriceDoubleCheck\\Model\\Resolver\\ApprovePrice") @doc(description: "Approve new price for a product.")
+    approvePriceSave(input: ApprovePriceSaveInput @doc(description: "Set new price for products.")): ApprovePriceSaveOutput @resolver(class: "Michel\\PriceDoubleCheck\\Model\\Resolver\\ApprovePriceSave") @doc(description: "Set new price for a product.")
+}
+
+type Query {
+    approvePriceList: ApprovePriceList @resolver(class: "Michel\\PriceDoubleCheck\\Model\\Resolver\\ApprovePriceList") @doc(description: "Return a list of Prices to approve.") @cache(cacheable: false)
+}
+
+
+input ApprovePriceInput @doc(description: "Change product price.") {
+    id: Int! @doc(description: "ID for Price Approve")
+}
+
+type ApprovePriceOutput @doc(description: "Message of price approve.") {
+    message: String! @doc(description: "Message of price approve")
+}
+
+
+input ApprovePriceSaveInput @doc(description: "Change product price.") {
+    sku: String! @doc(description: "SKU product.")
+    price: String! @doc(description: "New price for product")
+}
+
+type ApprovePriceSaveOutput @doc(description: "Message of price approve.") {
+    item: ApprovePriceListRow @doc(description: "Descrition add a table.")
+}
+
+
+type ApprovePriceList @doc(description: "Contains a list of Prices to approve.") {
+    items: [ApprovePriceListRow] @doc(description: "An array of prices to approve.")
+}
+
+type ApprovePriceListRow @doc(description: "Contains details prices to approve.") {
+    id: Int @doc(description: "The unique ID assigned to the item.")
+    name: String @doc(description: "NAME assigned to the item.")
+    sku: String @doc(description: "SKU assigned to the item.")
+    datetime: String @doc(description: "DATETIME assigned to the item.")
+    attribute_code: String @doc(description: "ATTRIBUTE assigned to the item.")
+    price_before: String @doc(description: "OLD PRICE assigned to the item.")
+    price_after_approve: String @doc(description: "NEW PRICE assigned to the item.")
+}
